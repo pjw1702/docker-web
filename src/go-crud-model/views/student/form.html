@@ -1,0 +1,49 @@
+<!-- Copy https://getbootstrap.com/docs/4.0/components/modal/ -->
+<!-- Modal -->
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{ .title }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form id="form-student" action="/student/store" method="POST">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="">Full Name</label>
+                    <input type="text" name="full_name" value="{{ .student.Name }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Gender</label>
+                    <select name="gender" class="form-control">
+                        <option {{ if eq .student.Gender `M` }} selected {{ end }} value="M">Men</option>
+                        <option {{ if eq .student.Gender `W` }} selected {{ end }} value="W">Women</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Birthplace</label>
+                    <input type="text" name="birthplace" value="{{ .student.Birthplace }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Birthday</label>
+                    <input type="date" name="birthday" value="{{ .student.Birthday }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <textarea name="address" class="form-control">{{ .student.Address }}</textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                {{ if .student.Id }}
+                    <input type="hidden" name="id" value="{{ .student.Id }}">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">change data</button>
+                {{ else }}
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Data</button>
+                {{ end }}
+            </div>
+        </form>
+    </div>
+</div>
