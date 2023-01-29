@@ -40,3 +40,17 @@ func (u UserModel) Where(user *entites.User, fieldName, fieldValue string) error
 	return nil
 
 }
+
+func (u UserModel) Create(user entites.User) (int64, error) {
+
+	result, err := u.db.Exec("insert into users (full_name, email, username, password) values(?,?,?,?)",
+		user.Full_Name, user.Email, user.Username, user.Password)
+
+	if err != nil {
+		return 0, err
+	}
+
+	lastInsertId, _ := result.LastInsertId()
+
+	return lastInsertId, nil
+}
