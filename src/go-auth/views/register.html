@@ -25,43 +25,50 @@
             <p>Please fill out the form below to register</p>
             <hr/>
 
+            {{ if .message }}
+                <div class="alert alert-success">
+                    {{ .message }}
+                </div>
+                </hr>
+            {{ end }}
+
             <div class="form-group">
                 <label for="">Full Name</label>
-                <input type="text" name="full_name" class="form-control {{ if .validation.Full_Name }} is-invalid {{ end }}">
+                <input type="text" name="full_name" value="{{ .user.Full_Name }}" class="form-control {{ if .validation.Full_Name }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                     {{ .validation.Full_Name }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="text" name="email" class="form-control {{ if .validation.Email }} is-invalid {{ end }}">
+                <input type="text" name="email" value="{{ .user.Email }}" class="form-control {{ if .validation.Email }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                     {{ .validation.Email }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Username</label>
-                <input type="text" name="username" class="form-control {{ if .validation.Username }} is-invalid {{ end }}">
+                <input type="text" name="username" value="{{ .user.Username }}" class="form-control {{ if .validation.Username }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                     {{ .validation.Username }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="password" name="password" class="form-control {{ if .validation.Password }} is-invalid {{ end }}">
+                <input type="password" name="password" value="{{ .user.Password }}" class="form-control {{ if .validation.Password }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                     {{ .validation.Password }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control {{ if .validation.Confirm_Passord }} is-invalid {{ end }}">
+                <input type="password" name="confirm_password" value="{{ .user.Confirm_Password }}" class="form-control {{ if .validation.Confirm_Password }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
-                    {{ .validation.Confirm_Passord }}
+                    {{ .validation.Confirm_Password }}
                 </div>
             </div>
 
-            <buttom type="submit" class="btn btn-success btn-block">SIGN UP</buttom>
+            <button type="submit" class="btn btn-success btn-block">SIGN UP</button>
             <hr/>
             <center>
                 <p>Got an account? <a href="/login">Login</a></p>
