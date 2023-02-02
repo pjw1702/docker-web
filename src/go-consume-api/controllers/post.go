@@ -14,7 +14,7 @@ import (
 )
 
 // Please refer to guide of jsonplaceholder
-// Get values matching keys by requesting HTTP method of Get
+// Automatically get values matching keys by requesting HTTP method of Get
 type Post struct {
 	Id     int64  `json:"id"`
 	Title  string `json:"title"`
